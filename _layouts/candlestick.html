@@ -1,0 +1,89 @@
+---
+layout: default-news
+---
+<div class="container">
+  <div class="row">
+
+   <div class="twelve columns">
+        <article class="mainchart">
+<script>
+window.onload = function () {
+  if (localStorage.justOnceCS!="true") {
+      localStorage.setItem("justOnceCS", "true");
+      window.location.reload();
+  }
+}
+window.setInterval(function () {
+        localStorage.setItem('justOnceCS', "false");
+},10000);
+jQuery.noConflict();
+var example = 'candlestick',
+theme = 'dark-unica';
+(function($){
+   $(function () {
+     $.getJSON('https://raw.githubusercontent.com/mthjn/rubycharts/master/polo2.json', function (data) {
+       $('#candlestick').highcharts('StockChart', {
+                    xAxis: {type: 'datetime'},
+                    chart: {renderTo: 'container'},
+                    scrollbar: {enabled: true},
+                    navigator: {enabled: true},
+                    rangeSelector : {
+                         selected : 2,
+                         enabled: true,
+                         buttons: [{
+                           type: 'hour',
+                           count: 1,
+                           text: '1h'
+                         }, {
+                           type: 'hour',
+                           count: 3,
+                           text: '3h'
+                         },{
+                           	type: 'day',
+                           	count: 1,
+                           	text: '24h'
+                           },  {
+                           	type: 'all',
+                           	text: 'WK'
+                           }]
+
+                     },
+                     title : {
+                         text : 'POLONIEX {{ page.pair }} 15min (900s)'
+                     },
+                     series : [{
+                         type : 'candlestick',
+                         name : ' {{ page.pair }}',
+                         data : data,
+                         pointInterval: 1000 * 60 * 15,
+                         dataGrouping : {
+                              units : [
+                                  [
+                                      'minute',
+                                      [15]
+                                  ],[
+                                      'day',
+                                      [1]
+                                  ]
+                              ]
+                          }
+                      }]
+                 });
+             });
+          });
+
+  })(jQuery);
+jQuery(document).ready(function(){jQuery("#view-menu").click(function(e){jQuery("#wrap").toggleClass("toggled")}),jQuery("#sidebar-close").click(function(e){jQuery("#wrap").removeClass("toggled")}),jQuery(document).keydown(function(e){var t;"INPUT"!=e.target.tagName&&(39==e.keyCode?t=document.getElementById("next-example"):37==e.keyCode&&(t=document.getElementById("previous-example")),t&&(location.href=t.href))}),jQuery("#switcher-selector").bind("change",function(){var e=jQuery(this).val();return e&&(window.location=e),!1})});
+</script>
+
+           <script src="/assets/charts/highstock.js"></script>
+           <script src="/assets/charts/exporting.js"></script>
+           <script src="/assets/charts/dark-unica.js"></script>
+
+           <p><a href="../">Switch To MACD Chart</a></p>
+           <div id="candlestick" style="height: 500px; min-width: 310px"></div>
+          {{ content }}
+        </article>
+    </div>
+
+  </div>

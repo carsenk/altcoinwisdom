@@ -1,0 +1,31 @@
+---
+layout: default
+navi:
+ exclude: yes
+---
+<div class="container">
+  <div class="row">
+   <div class="eight columns">
+
+     <br>
+
+      {% for post in site.posts offset: 0 limit: 15 %}
+       {% unless post.category contains "candlestick" %}
+        <h4 class="post">
+          <strong>
+            <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}, {{ post.pair }}</a>
+          </strong>
+        </h4>
+        {% endunless %}
+      {% endfor %}
+
+
+    </div>
+
+
+    <div class="four columns">
+      {% include sidebar.html %}
+    </div>
+
+
+  </div>

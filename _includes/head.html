@@ -1,0 +1,15 @@
+<head>
+<meta charset="utf-8">
+<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+<link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/assets/images/favicon.ico">
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+<meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}">
+<meta name="author" content="{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/all.css">
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/font/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
+<script async src="{{ site.url }}{{ site.baseurl }}/assets/js/jq.min.js"></script>
+<script async src="//cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.min.js?forceLang=en&theme=white&tracking=1&thirdparty=1&remember=180&privacyPage=%2Fabout%2F"></script>
+</head>

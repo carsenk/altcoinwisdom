@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="two columns stripe">
+      <div class="hl"><a href="/">{{ site.title }}</a></div>
+      <small><em>{{ site.subtitle }}</em></small>
+    </div>
+    <nav class="main">
+      <div class="ten columns">
+          {% for page in site.posts %}
+          {% unless page.navi.exclude == true %}
+          {% unless page.category contains "candlestick" %}
+          <span class="navi"><a href="{{ site.url }}{{ page.url }}">{{ page.pair }}</a></span>&nbsp;&nbsp;
+          {% endunless %}
+          {% endunless %}
+          {% endfor %}
+
+      </div>
+    </nav>
+</div>
+</div>
